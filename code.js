@@ -21,7 +21,8 @@ let partisss=[];
 let midheart=[];
 let ii=0;
 image.src = "heart2.png";
-
+let num=650;
+let num2=350;
 class parti{
     constructor() {
         this.x=mouse.x;
@@ -52,13 +53,13 @@ class parti{
 }
 class parti2{
     constructor(x, y) {
-        this.x=x*10+500+Math.random()*30;
-        this.y=y*10+300+Math.random()*30;
+        this.x=x*10+num+Math.random()*30;
+        this.y=y*10+num2+Math.random()*30;
         this.bro=0;
         this.angle = 0;
         this.size = Math.random()*10+3;
-        this.velx = (500-this.x)/100;
-        this.vely = (300-this.y)/100;
+        this.velx = (num-this.x)/100;
+        this.vely = (num2-this.y)/100;
         this.spin = Math.random()/100+0.1;
     }
     update(){
@@ -101,16 +102,16 @@ function animate(){
     for(var i=0; i<34; i++){
         if(Math.random()<=0.3){
             if(Math.random()<=0.5){
-                midheart.push(new parti2(xs[i], ys[i]));
+                midheart.push(new parti2(xs[i], -ys[i]));
             }else{
-                midheart.push(new parti2(-xs[i], ys[i]));
+                midheart.push(new parti2(-xs[i], -ys[i]));
             }
         }
     }
     for(var i=0; i<midheart.length; i++){
         midheart[i].update();
         midheart[i].draw();
-        if(Math.abs(midheart[i].x-500)<=3 && Math.abs(midheart[i].y-300)<=3){
+        if(Math.abs(midheart[i].x-num)<=3 && Math.abs(midheart[i].y-num2)<=3){
             midheart.splice(i, 1);
             i--;
         }
